@@ -33,7 +33,7 @@ public class AppFrame extends JFrame {
 
     private void showButton(){
         inicial = new PaginaInicial(this);
-        cardsPane.add(inicial, PaginaInicial.class.getName());
+        layout.show(cardsPane, PaginaInicial.class.getName());
     }
 
 
