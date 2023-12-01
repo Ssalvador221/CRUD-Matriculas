@@ -6,7 +6,7 @@ import java.awt.CardLayout;
 
 public class AppFrame extends JFrame {
     private PaginaInicial inicial;
-	private JPanel cardsPane;
+	  private JPanel cardsPane;
     private CardLayout layout;
     public static final String TITULO = "CRUD Matrículas";
 
@@ -16,18 +16,17 @@ public class AppFrame extends JFrame {
 
         layout = new CardLayout();
 
-		cardsPane = new JPanel();
-		cardsPane.setLayout(layout);
-		add(cardsPane);
+		    cardsPane = new JPanel();
+		    cardsPane.setLayout(layout);
+		    add(cardsPane);
 
         showButton();
     }
 
-
     public void showScreen(){
         pack();
-		setLocationRelativeTo(null);
-		setVisible(true);
+		    setLocationRelativeTo(null);
+		    setVisible(true);
         setSize(1024, 600);
     }
 
