@@ -2,6 +2,8 @@ package Model;
 
 public class Estudante {
   
+  private int id;
+
   private String nomeCompleto;
 
   private int idade;
@@ -25,20 +27,12 @@ public class Estudante {
   private boolean ativo;
 
 
-  public Estudante(String nomeCompleto, int idade, String email, String endereco,
-      String usuario, String senha, String curso, boolean ativo) {
+  public int getId(){
+    return id;
+  }
 
-    setNomeCompleto(nomeCompleto);
-    setIdade(idade);
-    setEmail(email);
-    setEndereco(endereco);
-    setCep(cep);
-    setTelefone(telefone);
-    setUsuario(usuario);
-    setSenha(senha);
-    setCurso(curso);
-    setObservacoes(observacoes);
-    setAtivo(ativo);
+  public void setId(int id){
+     this.id = id;
   }
 
   public String getNomeCompleto() {
@@ -125,5 +119,28 @@ public class Estudante {
   
   public void setAtivo(boolean ativo) {
     this.ativo = ativo;
+  }
+
+  @Override
+  public String toString(){
+    return String.format("%d: %s, %s\n", id, nomeCompleto, idade, email, endereco, cep, telefone, usuario, senha, curso, observacoes, ativo);
+  }
+
+  @Override
+  public boolean equals(Object obj){
+      if (this == obj) {
+        return true;
+      }
+
+      if (obj == null) {
+        return false;
+      }
+
+      if (getClass() != obj.getClass()) {
+        return false;
+      }
+
+      Estudante estudante = (Estudante) obj;
+      return id == estudante.id;
   }
 }
