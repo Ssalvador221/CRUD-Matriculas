@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
-    private static final String DB_CONNECTION = "jdbc:mysql://localhost:3306/crud";
+    private static final String DB_CONNECTION = "jdbc:mysql://localhost:3306/crudmilo";
     private static final String USER = "root";
     private static final String SENHA = "senai";
     private static Connection conexao;
