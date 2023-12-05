@@ -4,6 +4,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
+import Model.Estudante;
+
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
 
@@ -37,7 +39,6 @@ public class PaginaInicial extends JPanel{
         panel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
     }
-
 
 
 }

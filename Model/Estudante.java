@@ -90,9 +90,11 @@ public class Estudante {
   public void setUsuario(String usuario) {
     this.usuario = usuario;
   }
+
   public String getSenha() {
     return senha;
   }
+
   public void setSenha(String senha) {
     this.senha = senha;
   }
@@ -117,6 +119,10 @@ public class Estudante {
     return ativo;
   }
   
+  public boolean getAtivo(){
+    return ativo;
+  }
+
   public void setAtivo(boolean ativo) {
     this.ativo = ativo;
   }
