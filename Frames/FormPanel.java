@@ -1,7 +1,4 @@
-package View.Form;
-
-import View.BaseLayout;
-import View.Header.Header;
+package Frames;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,10 +9,10 @@ import java.util.Arrays;
 public class FormPanel extends JPanel {
     private BorderLayout layout;
     private EstudanteForm estudanteForm;
-    private BaseLayout baseLayout;
+    private PaginaInicial paginaInicial;
 
-    public FormPage(BaseLayout baseLayout) {
-        this.baseLayout = baseLayout;
+    public FormPanel(PaginaInicial paginaInicial) {
+        this.paginaInicial = paginaInicial;
         setBackground(Color.decode("#8C8C8C"));
         layout = new BorderLayout(5,5);
         setLayout(layout);
@@ -35,16 +32,16 @@ public class FormPanel extends JPanel {
     }
 
     private void initialize() {
-        estudanteForm = new EstudanteForm(baseLayout);
+        estudanteForm = new EstudanteForm(paginaInicial);
 
         add(estudanteForm,BorderLayout.CENTER);
 
-        header = new Header("Cadastrar Novo Estudante");
-        add(header, BorderLayout.NORTH);
+        //header = new Header("Cadastrar Novo Estudante");
+        //add(header, BorderLayout.NORTH);
     }
 
     public void verificarSeNovoOuEditar() {
-        if (estudanteForm.getRegistrationModel() == null) {
+        if (estudanteForm.getEstudante() == null) {
             estudanteForm.getNomeCompleto().setText("");
             estudanteForm.getIdade().setText("");
             estudanteForm.getEmail().setText("");

@@ -1,19 +1,36 @@
 package Frames;
 
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.Normalizer.Form;
+
+import javax.print.DocFlavor.SERVICE_FORMATTED;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JComponent;
 
 import Model.Estudante;
+import Model.EstudanteStorage;
 
 public class EstudanteForm extends JPanel {
-
-    private Estudante estudante;
 
     private static final Insets FIELD_INSETS = new Insets(5, 10, 0, 0);
     private GridBagLayout layout;
     private GridBagConstraints constraints;
-    private RegistrationModel estudante;
-    private BaseLayout baseLayout;
+    private Estudante estudante;
+    private PaginaInicial paginaInicial;
 
     private JTextField nomeCompleto;
     private JTextField idade;
@@ -28,9 +45,9 @@ public class EstudanteForm extends JPanel {
     private JCheckBox ativo;
     private String[] cursos = {"Selecione uma opção", "Administração", "ADS", "Medicina", "Direito", "Design", "Psicologia", "Física"};
 
-    public EstudanteForm(BaseLayout baseLayout) {
+    public EstudanteForm(PaginaInicial paginaInicial) {
         this.estudante = null;
-        this.baseLayout = baseLayout;
+        this.paginaInicial = paginaInicial;
         layout = new GridBagLayout();
         setLayout(layout);
         constraints = new GridBagConstraints();
@@ -86,7 +103,7 @@ public class EstudanteForm extends JPanel {
         return cursos;
     }
 
-    public RegistrationModel getEstudante() {
+    public Estudante getEstudante() {
         return estudante;
     }
 
@@ -99,12 +116,12 @@ public class EstudanteForm extends JPanel {
 
         fieldLabel = new JLabel("Nome Completo *");
         addFormComponents(fieldLabel, 0, 0);
-        nameTxt = new JTextField(45);
+        nomeCompleto = new JTextField(45);
         addFormComponents(nomeCompleto, 0, 1);
 
         fieldLabel = new JLabel("Idade *");
         addFormComponents(fieldLabel, 1, 0);
-        fullAge = new JTextField(3);
+        idade = new JTextField(3);
         addFormComponents(idade, 1, 1);
 
         fieldLabel = new JLabel("E-mail *");
@@ -114,7 +131,7 @@ public class EstudanteForm extends JPanel {
 
         fieldLabel = new JLabel("Endereço *");
         addFormComponents(fieldLabel, 3, 0);
-        adress = new JTextField(100);
+        endereco = new JTextField(100);
         addFormComponents(endereco, 3, 1);
 
         fieldLabel = new JLabel("CEP");
@@ -124,34 +141,34 @@ public class EstudanteForm extends JPanel {
 
         fieldLabel = new JLabel("Telefone");
         addFormComponents(fieldLabel, 5, 0);
-        phone = new JTextField(45);
+        telefone = new JTextField(45);
         addFormComponents(telefone, 5, 1);
 
         fieldLabel = new JLabel("Usuário *");
         addFormComponents(fieldLabel, 6, 0);
-        user = new JTextField(45);
+        usuario = new JTextField(45);
         addFormComponents(usuario, 6, 1);
 
         fieldLabel = new JLabel("Senha *");
         addFormComponents(fieldLabel, 7, 0);
-        password = new JPasswordField(45);
+        senha = new JPasswordField(45);
         addFormComponents(senha, 7, 1);
 
         fieldLabel = new JLabel("Curso *");
         addFormComponents(fieldLabel, 8, 0);
-        course = new JComboBox(courses);
+        curso = new JComboBox(cursos);
         addFormComponents(curso, 8, 1);
 
         JScrollPane scrollPane;
         fieldLabel = new JLabel("Observações");
         addFormComponents(fieldLabel, 9, 0);
-        obs = new JTextArea(3, 25);
+        observacoes = new JTextArea(3, 25);
         scrollPane = new JScrollPane(observacoes);
         addFormComponents(scrollPane, 9, 1, 3, 3);
 
         fieldLabel = new JLabel("Ativo *");
         addFormComponents(fieldLabel, 12, 0);
-        active = new JCheckBox();
+        ativo = new JCheckBox();
         addFormComponents(ativo, 12, 1);
 
         addFormComponents(mountFormButtons(), 13, 0, 2, 0);
@@ -176,27 +193,25 @@ public class EstudanteForm extends JPanel {
                 if (estudante == null) {
 
                     if (verifyFields()) {
-                        estudante = new RegistrationModel();
+                        estudante = new Estudante();
 
                         insertModelData(estudante, true);
 
-                        JOptionPane.showMessageDialog(RegisterForm.this, "Estudante adicionado com sucesso!", "Cadastro de Matrícula",
+                        JOptionPane.showMessageDialog(EstudanteForm.this, "Estudante adicionado com sucesso!", "Cadastro de Matrícula",
                                 JOptionPane.INFORMATION_MESSAGE);
                                 //Redireciona para a home
                     } else {
-                        JOptionPane.showMessageDialog(RegisterForm.this, "Houve alguma falha na verificação dos campos. 
-                            \n Por favor verifique: \n Se os campos marcados com '*' estão preenchidos \n Se o campo Idade contém um número 
-                            \n Se foi selecionado algum curso.", "Cadastro de Matrícula",
+                        JOptionPane.showMessageDialog(EstudanteForm.this, "Houve alguma falha na verificação dos campos.\n Por favor verifique: \n Se os campos marcados com '*' estão preenchidos \n Se o campo Idade contém um número \n Se foi selecionado algum curso.", "Cadastro de Matrícula",
                                 JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
                     if (verifyFields()) {
                         insertModelData(estudante, false);
-                        JOptionPane.showMessageDialog(RegisterForm.this, "Atualizado com sucesso!", "Cadastro de Matrícula",
+                        JOptionPane.showMessageDialog(EstudanteForm.this, "Atualizado com sucesso!", "Cadastro de Matrícula",
                                 JOptionPane.INFORMATION_MESSAGE);
                                 //Redireciona para a home
                     } else {
-                        JOptionPane.showMessageDialog(RegisterForm.this, "Oops, houve alguma falha na verificação dos campos. :( \n Por favor verifique: \n Se os campos marcados com '*' estão preenchidos \n Se o campo Idade contém um número \n Se foi selecionado algum curso.", "Cadastro de Matrícula",
+                        JOptionPane.showMessageDialog(EstudanteForm.this, "Oops, houve alguma falha na verificação dos campos. :( \n Por favor verifique: \n Se os campos marcados com '*' estão preenchidos \n Se o campo Idade contém um número \n Se foi selecionado algum curso.", "Cadastro de Matrícula",
                                 JOptionPane.ERROR_MESSAGE);
                     }
                 }
@@ -218,7 +233,7 @@ public class EstudanteForm extends JPanel {
                     //Redireciona para a home
                 }
                 if (dialogoButton == JOptionPane.NO_OPTION) {
-                    //baseLayout.showFormPage(null);
+                    //paginaInicial.showFormPage(null);
                     //retorna o formulário limpo
                 }
 
@@ -236,15 +251,15 @@ public class EstudanteForm extends JPanel {
         estudante.setCep(cep.getText());
         estudante.setTelefone(telefone.getText());
         estudante.setUsuario(usuario.getText());
-        estudante.setSenha(senha.getText());
+        estudante.setSenha(senha.getPassword().toString());
         estudante.setCurso(curso.getSelectedItem().toString());
         estudante.setObservacoes(observacoes.getText());
         estudante.setAtivo(ativo.isSelected());
 
         if (isNew == true) {
-            RegistrationStorage.create(estudante);
+            EstudanteStorage.inserirEstudante(estudante);
         } else {
-            RegistrationStorage.update(estudante);
+            EstudanteStorage.updateEstudante(estudante);
         }
     }
 
