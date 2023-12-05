@@ -10,16 +10,17 @@ import java.awt.FlowLayout;
 public class PaginaInicial extends JPanel{
 
     private JPanel panel;
-    //private JTable table;
+    private JTable table;
     private JButton button;
     private JButton button1;
     private JButton button2;
     private FlowLayout flow;
-    
+    private String[] columnNames = {"Id", "Nome completo"}
 
     public PaginaInicial(AppFrame frame){
         flow = new FlowLayout();
         panel = new JPanel();
+        table = new JTable();
         criarButtons();
     }
 
@@ -41,6 +42,7 @@ public class PaginaInicial extends JPanel{
         panel.add(button2);
 
     }
+
 
 
 
