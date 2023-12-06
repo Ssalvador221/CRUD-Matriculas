@@ -212,7 +212,7 @@ public class EstudanteForm extends JPanel {
                                 //Redireciona para a home
                     } else {
                         JOptionPane.showMessageDialog(EstudanteForm.this, "Oops, houve alguma falha na verificação dos campos. :( \n Por favor verifique: \n Se os campos marcados com '*' estão preenchidos \n Se o campo Idade contém um número \n Se foi selecionado algum curso.", "Cadastro de Matrícula",
-                                JOptionPane.ERROR_MESSAGE);
+                                                        JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }

@@ -4,8 +4,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
+import java.awt.Dimension;
 import Model.Estudante;
-
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -20,20 +20,35 @@ public class PaginaInicial extends JPanel{
     private JButton button1;
     private JButton button2;
     private FlowLayout flow;
-    
+    private String[] columnNames = {"Id", "Nome completo"}
 
     public PaginaInicial(AppFrame frame){
-
         flow = new FlowLayout();
+        panel = new JPanel();
+        table = new JTable();
+        criarButtons();
     }
 
     public void criarButtons(){
-        panel = new JPanel();
+        
         panel.setLayout(flow);
         flow.setAlignment(FlowLayout.RIGHT);
+
         button = new JButton("Criar");
         button1 = new JButton("Editar");
         button2 = new JButton("Remover");
+
+        button.setPreferredSize(new Dimension(40, 40));
+        button1.setPreferredSize(new Dimension(40, 40));
+        button2.setPreferredSize(new Dimension(40, 40));
+
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                frame.mostrarFormEstudante(null);
+            }
+        });
 
 
         button.addActionListener(new ActionListener() {
@@ -47,9 +62,5 @@ public class PaginaInicial extends JPanel{
         panel.add(button1);
         panel.add(button2);
 
-        panel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-
     }
-
-
 }
