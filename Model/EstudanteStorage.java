@@ -11,7 +11,7 @@ public class EstudanteStorage {
 
 
     public static void inserirEstudante(Estudante estudante){
-        final String queryInsert = "INSERT INTO estudante(nomeCompleto, idade, email, endereco,cep,telefone,usuario,senha,curso,observacoes,ativo VALUES(?,?,?,?,?,?,?,?,?,?,?))";
+        final String queryInsert = "INSERT INTO estudante(nome_Completo, idade, email, endereco,cep,telefone,usuario,senha,curso,observacoes,ativo VALUES(?,?,?,?,?,?,?,?,?,?,?))";
         
 
         Connection dbConnection = null;
@@ -61,7 +61,7 @@ public class EstudanteStorage {
 
 
     public static void updateEstudante(Estudante estudante){
-        final String queryUpdate = "UPDATE estudante SET nomeCompleto = ?, idade = ?, email = ?, endereco = ?, cep = ?, telefone = ?, usuario = ?, senha = ?, curso = ?, observacoes = ?, ativo = ? ";
+        final String queryUpdate = "UPDATE estudante SET nome_completo = ?, idade = ?, email = ?, endereco = ?, cep = ?, telefone = ?, usuario = ?, senha = ?, curso = ?, observacoes = ?, ativo = ? ";
         
 
         Connection dbConnection = null;
@@ -130,7 +130,7 @@ public class EstudanteStorage {
     public static List<Estudante> listarEstudante(){
         List<Estudante> estudantes = new ArrayList<>();
 
-        final String querySelect = "SELECT e.id, e.nomeCompleto, e.idade, e.email, e.endereco, e.cep, e.telefone, e.usuario, e.senha, e.curso, e.oberservacoes, e.ativo FROM estudante e ORDER BY e.id";
+        final String querySelect = "SELECT e.id, e.nome_completo, e.idade, e.email, e.endereco, e.cep, e.telefone, e.usuario, e.senha, e.curso, e.observacoes, e.ativo FROM estudante e ORDER BY e.id;";
         
         Connection dbConnection = null;
         Statement statement = null;
@@ -145,7 +145,7 @@ public class EstudanteStorage {
             while (resultSet.next()) {
                 Estudante estudante = new Estudante();
                 estudante.setId(resultSet.getInt("id"));
-                estudante.setNomeCompleto(resultSet.getString("nomeCompleto"));
+                estudante.setNomeCompleto(resultSet.getString("nome_completo"));
                 estudante.setIdade(resultSet.getInt("idade"));
                 estudante.setEmail(resultSet.getString("email"));
                 estudante.setEndereco(resultSet.getString("endereco"));

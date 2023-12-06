@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableModel;
 
 import Model.Estudante;
 
 public class EstudentTableModel extends AbstractTableModel {
     private List<Estudante> estudantes = new ArrayList<>();
     private String[] columnNames = {"Id", "Nome completo", "Idade", "Email", "Endereço", "Cep", "Telefone", "Usuario", "Senha", "Curso", "Observaçoes", "Ativo"};
-    private TableModel tableModel;
 
     public EstudentTableModel(List<Estudante> estudantes){
         this.estudantes = estudantes;
@@ -28,53 +26,80 @@ public class EstudentTableModel extends AbstractTableModel {
     }
 
     @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        String values = null;
-    
-        Estudante estudante = estudantes.get(rowIndex);
+    public String getColumnName(int columnIndex){
+        String columnName = null;
 
-        switch (columnIndex) {
-            case 0:
-                    values = Integer.toString(estudante.getId());
-                break;
-            case 1: 
-                    values = estudante.getNomeCompleto();
-                break;
-             case 2: 
-            
-                break;
-            case 3: 
-            
-                break;
-            case 4: 
-            
-                break;
-            case 5: 
-            
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
-
-            case 8:
-                break;
-            case 9:
-                break;
-
-            case  10:
-                break;
-            case 11:
-                break;
-            default:
-                break;
+        if(columnIndex >= 0 && columnIndex < columnNames.length){
+            columnName = columnNames[columnIndex];
         }
-
-
-        return Integer.valueOf(rowIndex*columnIndex);
+        return columnName;
     }
 
 
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        String values = null;
+    
+        if(rowIndex >= 0 && rowIndex < estudantes.size()){
+            Estudante estudante = estudantes.get(rowIndex);    
+        
+            switch (columnIndex) {
+                case 0:
+                    values = Integer.toString(estudante.getId());
+                break;
+                case 1: 
+                    values = estudante.getNomeCompleto();
+                    break;
+                case 2: 
+                    values = Integer.toString(estudante.getIdade());
+                    break;
+                case 3: 
+                    values = estudante.getEmail();
+                    break;
+                case 4: 
+                    values = estudante.getEndereco();
+                    break;
+                case 5: 
+                    values = estudante.getCep();
+                    break;
+                case 6:
+                    values = estudante.getTelefone();
+                    break;
+                case 7:
+                    values = estudante.getUsuario();
+                    break;
+                case 8:
+                    values = estudante.getSenha();
+                    break;
+                case 9:
+                    values = estudante.getCurso();
+                    break;
+                case  10:
+                    values = estudante.getObservacoes();
+                    break;
+                case 11:
+                    values = Boolean.toString(estudante.getAtivo());
+                    break;
+                default:
+                    System.out.println("Algo deu Errado!");
+                    break;
+            }   
+        }
+
+        return values;
+    }
+
+
+    public void carregarEstudante(List<Estudante> estudante){
+        this.estudantes = estudante;
+        fireTableDataChanged();
+    }
+
+    public void removerEstudante(Estudante estudante){
+        estudantes.remove(estudante);
+        fireTableDataChanged();
+    }
 
     
 

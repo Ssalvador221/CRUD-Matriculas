@@ -5,8 +5,6 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 
 import java.awt.Dimension;
-import Model.Estudante;
-import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,7 +43,7 @@ public class PaginaInicial extends JPanel{
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                frame.mostrarFormEstudante(null);
+                frame.showEstudentTable();
             }
         });
 

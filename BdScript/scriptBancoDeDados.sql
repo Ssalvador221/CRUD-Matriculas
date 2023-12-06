@@ -1,6 +1,6 @@
 create table estudante(
 	id int PRIMARY KEY auto_increment,
-    nomeCompleto varchar(80) not null,
+    nome_completo varchar(80) not null,
     idade int not null,
     email varchar(80) not null,
     endereco varchar(100) not null,
