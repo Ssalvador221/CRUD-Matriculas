@@ -17,12 +17,10 @@ public class AppFrame extends JFrame {
     public AppFrame(){
         this.setTitle(TITULO);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         layout = new CardLayout();
 		cardsPane = new JPanel();
 		setLayout(layout);
 		add(cardsPane);
-        showButton();
         criarCards();
     }
 
@@ -31,11 +29,6 @@ public class AppFrame extends JFrame {
 		    setLocationRelativeTo(null);
 		    setVisible(true);
         setSize(1024, 600);
-    }
-
-    private void showButton(){
-        inicial = new PaginaInicial(this);
-        layout.show(cardsPane, PaginaInicial.class.getName());
     }
 
 	public void mostrarFormEstudante(Estudante estudante) {
@@ -47,7 +40,7 @@ public class AppFrame extends JFrame {
 		inicial = new PaginaInicial(this);
 		cardsPane.add(inicial, PaginaInicial.class.getName());
 
-		formPanel = new FormPanel(inicial);
+		formPanel = new FormPanel(this);
 		cardsPane.add(formPanel, FormPanel.class.getName());
 	}
 
