@@ -10,7 +10,7 @@ import java.awt.CardLayout;
 public class AppFrame extends JFrame {
 	private JPanel cardsPane;
     private CardLayout layout;
-    private FormPanel formPanel;
+    private EstudanteFormPanel formPanel;
     private EstudanteListTable estudanteListTable;
     public static final String TITULO = "CRUD Matrículas";
 
@@ -35,8 +35,8 @@ public class AppFrame extends JFrame {
 
 
 	public void mostrarFormEstudante(Estudante estudante) {
-		formPanel.getEstudanteForm().setEstudante(estudante);
-		layout.show(cardsPane, EstudanteForm.class.getName());
+		formPanel.setEstudante(estudante);
+		layout.show(cardsPane, EstudanteFormPanel.class.getName());
 	} 
 
     public void showEstudentTable(){
@@ -48,8 +48,8 @@ public class AppFrame extends JFrame {
         estudanteListTable = new EstudanteListTable(this);
         cardsPane.add(estudanteListTable, EstudanteListTable.class.getName());
 
-		formPanel = new FormPanel(this);
-		cardsPane.add(formPanel, FormPanel.class.getName());
+		formPanel = new EstudanteFormPanel(this);
+		cardsPane.add(formPanel, EstudanteFormPanel.class.getName());
 	}
 
 }

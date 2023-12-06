@@ -119,7 +119,7 @@ public class Estudante {
     return ativo;
   }
   
-  public boolean getAtivo(){
+  public Boolean getAtivo(){
     return ativo;
   }
 

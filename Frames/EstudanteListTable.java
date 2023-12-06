@@ -48,9 +48,9 @@ public class EstudanteListTable  extends JPanel {
 			public void valueChanged(ListSelectionEvent e) {
 				if (!e.getValueIsAdjusting()) {
 					if (table.getSelectedRow() >= 0) {
-						
+						habilitarBotoes();
 					} else {
-						
+						desabilitarBotoes();
 					}
 				}
 			}
@@ -65,14 +65,14 @@ public class EstudanteListTable  extends JPanel {
     private void criarComandosPanel() {
         JPanel panel = new JPanel();
         FlowLayout layout = (FlowLayout) panel.getLayout();
-        layout.setAlignment(FlowLayout.RIGHT);
+        layout.setAlignment(FlowLayout.CENTER);
 
-        newStudentButton = new JButton("Criar Nova");
+        newStudentButton = new JButton("Novo Estudante");
         newStudentButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                frame.mostrarFormEstudante(null);
             }
         });
         panel.add(newStudentButton);
