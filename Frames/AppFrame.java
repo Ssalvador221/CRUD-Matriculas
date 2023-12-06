@@ -8,7 +8,6 @@ import Model.Estudante;
 import java.awt.CardLayout;
 
 public class AppFrame extends JFrame {
-    private PaginaInicial paginaInicial;
 	private JPanel cardsPane;
     private CardLayout layout;
     private FormPanel formPanel;
@@ -24,7 +23,6 @@ public class AppFrame extends JFrame {
 		cardsPane = new JPanel();
 		cardsPane.setLayout(layout);
 		add(cardsPane);
-        showButton();
         criarCards();
     }
 
@@ -35,10 +33,6 @@ public class AppFrame extends JFrame {
         setSize(1024, 600);
     }
 
-    private void showButton(){
-        paginaInicial = new PaginaInicial(this);
-        layout.show(cardsPane, PaginaInicial.class.getName());
-    }
 
 	public void mostrarFormEstudante(Estudante estudante) {
 		formPanel.getEstudanteForm().setEstudante(estudante);
@@ -51,9 +45,6 @@ public class AppFrame extends JFrame {
     }
 
     private void criarCards() {
-		paginaInicial = new PaginaInicial(this);
-		cardsPane.add(paginaInicial, PaginaInicial.class.getName());
-
         estudanteListTable = new EstudanteListTable(this);
         cardsPane.add(estudanteListTable, EstudanteListTable.class.getName());
 

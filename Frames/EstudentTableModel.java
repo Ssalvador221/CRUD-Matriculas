@@ -90,12 +90,6 @@ public class EstudentTableModel extends AbstractTableModel {
         return values;
     }
 
-
-    public void carregarEstudante(List<Estudante> estudante){
-        this.estudantes = estudante;
-        fireTableDataChanged();
-    }
-
     public Estudante getEstudante(int rowIndex) {
         Estudante estudante = null;
 
@@ -106,10 +100,11 @@ public class EstudentTableModel extends AbstractTableModel {
         return estudante;
     }
     
-    public void remove(Estudante estudante) {
-        estudantes.remove(estudante);
+    public void carregarEstudante(List<Estudante> estudante){
+        this.estudantes = estudante;
         fireTableDataChanged();
     }
+
     public void removerEstudante(Estudante estudante){
         estudantes.remove(estudante);
         fireTableDataChanged();
