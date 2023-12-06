@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.util.Arrays;
 
 public class EstudanteFormPanel extends JPanel {
     private static final Insets FIELD_INSETS = new Insets(5, 10, 0, 0);
@@ -55,7 +56,7 @@ public class EstudanteFormPanel extends JPanel {
             @Override
             public void componentShown(ComponentEvent e) {
                  if (estudante == null) {
-                    id.setText("");
+                    estudante = new Estudante();
                     nome_completo.setText("");
                     email.setText("");
                     endereco.setText("");
@@ -64,7 +65,7 @@ public class EstudanteFormPanel extends JPanel {
                     usuario.setText("");
                     senha.setText("");
                     observacoes.setText("");
-                    ativo.setSelected(ATIVADO || DESATIVADO);
+                    ativo.setSelected(false);
                 }else{
                     id.setText(Integer.toString(estudante.getId()));
                     nome_completo.setText(estudante.getNomeCompleto());
@@ -73,6 +74,7 @@ public class EstudanteFormPanel extends JPanel {
                     cep.setText(estudante.getCep());
                     telefone.setText(estudante.getTelefone());
                     usuario.setText(estudante.getUsuario());
+                    
                     senha.setText(estudante.getSenha());
                     observacoes.setText("");
                     ativo.setSelected(estudante.getAtivo() ? ATIVADO :  DESATIVADO);
@@ -183,8 +185,17 @@ public class EstudanteFormPanel extends JPanel {
                     estudante.setAtivo(ativo.isSelected());
                     EstudanteStorage.inserirEstudante(estudante);
 				} else {
-					estudante.setId(Integer.parseInt(id.getText()));
 					estudante.setNomeCompleto(nome_completo.getText());
+                    estudante.setIdade(Integer.parseInt(idade.getText()));
+                    estudante.setEmail(email.getText());
+                    estudante.setEndereco(endereco.getText());
+                    estudante.setCep(cep.getText());
+                    estudante.setTelefone(telefone.getText());                    
+                    estudante.setUsuario(usuario.getText());
+                    estudante.setSenha(senha.getPassword().toString());
+                    estudante.setCurso(curso.getSelectedItem().toString());
+                    estudante.setObservacoes(observacoes.getText());
+                    estudante.setAtivo(ativo.isSelected());
 					estudante.setObservacoes(observacoes.getText());
 					EstudanteStorage.updateEstudante(estudante);
 				}
