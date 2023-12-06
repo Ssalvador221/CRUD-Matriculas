@@ -4,7 +4,13 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
+<<<<<<< HEAD
 import java.awt.Dimension;
+=======
+import Model.Estudante;
+
+import java.awt.ComponentOrientation;
+>>>>>>> 1c99db907af50712073d8cf6112a4dcb21349d54
 import java.awt.FlowLayout;
 
 public class PaginaInicial extends JPanel{
@@ -44,6 +50,9 @@ public class PaginaInicial extends JPanel{
     }
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 1c99db907af50712073d8cf6112a4dcb21349d54
 }
