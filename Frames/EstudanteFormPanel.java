@@ -94,59 +94,59 @@ public class EstudanteFormPanel extends JPanel {
         label = new JLabel("Nome Completo *");
         adicionarComponente(label, 0, 0);
         nome_completo = new JTextField(45);
-        adicionarComponente(nome_completo, 0, 1);
+        adicionarComponente(nome_completo, 1, 0);
 
         label = new JLabel("Idade *");
-        adicionarComponente(label, 1, 0);
+        adicionarComponente(label, 0, 2);
         idade = new JTextField(3);
-        adicionarComponente(idade, 1, 1);
+        adicionarComponente(idade, 1, 2);
 
         label = new JLabel("E-mail *");
         adicionarComponente(label, 2, 0);
         email = new JTextField(45);
-        adicionarComponente(email, 2, 1);
+        adicionarComponente(email, 3, 0);
 
         label = new JLabel("Endereço *");
-        adicionarComponente(label, 3, 0);
+        adicionarComponente(label, 2, 2);
         endereco = new JTextField(100);
-        adicionarComponente(endereco, 3, 1);
+        adicionarComponente(endereco, 3, 2);
 
         label = new JLabel("CEP");
         adicionarComponente(label, 4, 0);
         cep = new JTextField(15);
-        adicionarComponente(cep, 4, 1);
+        adicionarComponente(cep, 5, 0);
 
         label = new JLabel("Telefone");
-        adicionarComponente(label, 5, 0);
+        adicionarComponente(label, 4, 2);
         telefone = new JTextField(45);
-        adicionarComponente(telefone, 5, 1);
+        adicionarComponente(telefone, 5, 2);
 
         label = new JLabel("Usuário *");
         adicionarComponente(label, 6, 0);
         usuario = new JTextField(45);
-        adicionarComponente(usuario, 6, 1);
+        adicionarComponente(usuario, 7, 0);
 
         label = new JLabel("Senha *");
-        adicionarComponente(label, 7, 0);
+        adicionarComponente(label, 6, 2);
         senha = new JPasswordField(45);
-        adicionarComponente(senha, 7, 1);
+        adicionarComponente(senha, 7, 2);
 
         label = new JLabel("Curso *");
         adicionarComponente(label, 8, 0);
         curso = new JComboBox(cursos);
-        adicionarComponente(curso, 8, 1);
+        adicionarComponente(curso, 9, 0);
 
         
         label = new JLabel("Observações");
-        adicionarComponente(label, 9, 0);
-        observacoes = new JTextArea(3, 25);
-        JScrollPane scrollPane = new JScrollPane(observacoes);
-        adicionarComponente(scrollPane, 9, 1, 3, 3);
+        adicionarComponente(label, 10, 0);
+		observacoes = new JTextArea(10, 30); 
+        observacoes.setSize(20, 60);
+        adicionarComponente(observacoes, 11, 0);
 
         label = new JLabel("Ativo *");
-        adicionarComponente(label, 12, 0);
+        adicionarComponente(label, 13, 0);
         ativo = new JCheckBox();
-        adicionarComponente(ativo, 12, 1);
+        adicionarComponente(ativo, 14, 0);
 
         criarBotoes();
     }
@@ -155,7 +155,7 @@ public class EstudanteFormPanel extends JPanel {
     private void criarBotoes() {
 		JPanel btnPanel = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) btnPanel.getLayout();
-		flowLayout.setAlignment(FlowLayout.LEFT);
+		flowLayout.setAlignment(FlowLayout.CENTER);
 
         cancelarBtn(btnPanel);
 		salvarBtn(btnPanel);
@@ -170,9 +170,18 @@ public class EstudanteFormPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (estudante == null) {
 					estudante = new Estudante();
-					estudante.setNomeCompleto(nome_completo.getText());
-					estudante.setObservacoes(observacoes.getText());
-					EstudanteStorage.inserirEstudante(estudante);
+                    estudante.setNomeCompleto(nome_completo.getText());
+                    estudante.setIdade(Integer.parseInt(idade.getText()));
+                    estudante.setEmail(email.getText());
+                    estudante.setEndereco(endereco.getText());
+                    estudante.setCep(cep.getText());
+                    estudante.setTelefone(telefone.getText());
+                    estudante.setUsuario(usuario.getText());
+                    estudante.setSenha(senha.getPassword().toString());
+                    estudante.setCurso(curso.getSelectedItem().toString());
+                    estudante.setObservacoes(observacoes.getText());
+                    estudante.setAtivo(ativo.isSelected());
+                    EstudanteStorage.inserirEstudante(estudante);
 				} else {
 					estudante.setId(Integer.parseInt(id.getText()));
 					estudante.setNomeCompleto(nome_completo.getText());
