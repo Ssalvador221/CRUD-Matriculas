@@ -20,7 +20,6 @@ public class PaginaInicial extends JPanel{
     private JButton button1;
     private JButton button2;
     private FlowLayout flow;
-    private String[] columnNames = {"Id", "Nome completo"}
 
     public PaginaInicial(AppFrame frame){
         flow = new FlowLayout();
@@ -41,14 +40,6 @@ public class PaginaInicial extends JPanel{
         button.setPreferredSize(new Dimension(40, 40));
         button1.setPreferredSize(new Dimension(40, 40));
         button2.setPreferredSize(new Dimension(40, 40));
-
-
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e){
-                frame.mostrarFormEstudante(null);
-            }
-        });
 
 
         button.addActionListener(new ActionListener() {
