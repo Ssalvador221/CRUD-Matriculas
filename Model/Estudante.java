@@ -4,7 +4,7 @@ public class Estudante {
   
   private int id;
 
-  private String nomeCompleto;
+  private String nome_completo;
 
   private int idade;
 
@@ -36,11 +36,11 @@ public class Estudante {
   }
 
   public String getNomeCompleto() {
-    return nomeCompleto;
+    return nome_completo;
   }
 
   public void setNomeCompleto(String nomeCompleto) {
-    this.nomeCompleto = nomeCompleto;
+    this.nome_completo = nomeCompleto;
   }
 
   public int getIdade() {
@@ -129,7 +129,7 @@ public class Estudante {
 
   @Override
   public String toString(){
-    return String.format("%d: %s, %s\n", id, nomeCompleto, idade, email, endereco, cep, telefone, usuario, senha, curso, observacoes, ativo);
+    return String.format("%d: %s, %s\n", id, nome_completo, idade, email, endereco, cep, telefone, usuario, senha, curso, observacoes, ativo);
   }
 
   @Override
