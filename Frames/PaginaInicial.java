@@ -4,17 +4,16 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
-<<<<<<< HEAD
 import java.awt.Dimension;
-=======
 import Model.Estudante;
-
 import java.awt.ComponentOrientation;
->>>>>>> 1c99db907af50712073d8cf6112a4dcb21349d54
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PaginaInicial extends JPanel{
 
+    private AppFrame frame;
     private JPanel panel;
     private JTable table;
     private JButton button;
@@ -43,16 +42,25 @@ public class PaginaInicial extends JPanel{
         button1.setPreferredSize(new Dimension(40, 40));
         button2.setPreferredSize(new Dimension(40, 40));
 
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                frame.mostrarFormEstudante(null);
+            }
+        });
+
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                frame.mostrarFormEstudante(null);
+            }
+        });
+
         panel.add(button);
         panel.add(button1);
         panel.add(button2);
 
     }
-
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 1c99db907af50712073d8cf6112a4dcb21349d54
 }
