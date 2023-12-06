@@ -8,9 +8,12 @@ import Model.Estudante;
 
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PaginaInicial extends JPanel{
 
+    private AppFrame frame;
     private JPanel panel;
     private JTable table;
     private JButton button;
@@ -31,6 +34,14 @@ public class PaginaInicial extends JPanel{
         button = new JButton("Criar");
         button1 = new JButton("Editar");
         button2 = new JButton("Remover");
+
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                frame.mostrarFormEstudante(null);
+            }
+        });
 
         panel.add(button);
         panel.add(button1);

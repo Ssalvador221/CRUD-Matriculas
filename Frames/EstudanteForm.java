@@ -12,7 +12,6 @@ import javax.print.DocFlavor.SERVICE_FORMATTED;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -20,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 
 import Model.Estudante;
 import Model.EstudanteStorage;
@@ -52,7 +52,7 @@ public class EstudanteForm extends JPanel {
         setLayout(layout);
         constraints = new GridBagConstraints();
 
-        mountFormFields();
+        criarForm();
     }
 
     public JTextField getNomeCompleto() {
@@ -111,63 +111,63 @@ public class EstudanteForm extends JPanel {
         this.estudante = estudante;
     }
 
-    public void mountFormFields() {
-        JLabel fieldLabel;
+    public void criarForm() {
+        JLabel label;
 
-        fieldLabel = new JLabel("Nome Completo *");
-        addFormComponents(fieldLabel, 0, 0);
+        label = new JLabel("Nome Completo *");
+        addFormComponents(label, 0, 0);
         nomeCompleto = new JTextField(45);
         addFormComponents(nomeCompleto, 0, 1);
 
-        fieldLabel = new JLabel("Idade *");
-        addFormComponents(fieldLabel, 1, 0);
+        label = new JLabel("Idade *");
+        addFormComponents(label, 1, 0);
         idade = new JTextField(3);
         addFormComponents(idade, 1, 1);
 
-        fieldLabel = new JLabel("E-mail *");
-        addFormComponents(fieldLabel, 2, 0);
+        label = new JLabel("E-mail *");
+        addFormComponents(label, 2, 0);
         email = new JTextField(45);
         addFormComponents(email, 2, 1);
 
-        fieldLabel = new JLabel("Endereço *");
-        addFormComponents(fieldLabel, 3, 0);
+        label = new JLabel("Endereço *");
+        addFormComponents(label, 3, 0);
         endereco = new JTextField(100);
         addFormComponents(endereco, 3, 1);
 
-        fieldLabel = new JLabel("CEP");
-        addFormComponents(fieldLabel, 4, 0);
+        label = new JLabel("CEP");
+        addFormComponents(label, 4, 0);
         cep = new JTextField(15);
         addFormComponents(cep, 4, 1);
 
-        fieldLabel = new JLabel("Telefone");
-        addFormComponents(fieldLabel, 5, 0);
+        label = new JLabel("Telefone");
+        addFormComponents(label, 5, 0);
         telefone = new JTextField(45);
         addFormComponents(telefone, 5, 1);
 
-        fieldLabel = new JLabel("Usuário *");
-        addFormComponents(fieldLabel, 6, 0);
+        label = new JLabel("Usuário *");
+        addFormComponents(label, 6, 0);
         usuario = new JTextField(45);
         addFormComponents(usuario, 6, 1);
 
-        fieldLabel = new JLabel("Senha *");
-        addFormComponents(fieldLabel, 7, 0);
+        label = new JLabel("Senha *");
+        addFormComponents(label, 7, 0);
         senha = new JPasswordField(45);
         addFormComponents(senha, 7, 1);
 
-        fieldLabel = new JLabel("Curso *");
-        addFormComponents(fieldLabel, 8, 0);
+        label = new JLabel("Curso *");
+        addFormComponents(label, 8, 0);
         curso = new JComboBox(cursos);
         addFormComponents(curso, 8, 1);
 
         JScrollPane scrollPane;
-        fieldLabel = new JLabel("Observações");
-        addFormComponents(fieldLabel, 9, 0);
+        label = new JLabel("Observações");
+        addFormComponents(label, 9, 0);
         observacoes = new JTextArea(3, 25);
         scrollPane = new JScrollPane(observacoes);
         addFormComponents(scrollPane, 9, 1, 3, 3);
 
-        fieldLabel = new JLabel("Ativo *");
-        addFormComponents(fieldLabel, 12, 0);
+        label = new JLabel("Ativo *");
+        addFormComponents(label, 12, 0);
         ativo = new JCheckBox();
         addFormComponents(ativo, 12, 1);
 
