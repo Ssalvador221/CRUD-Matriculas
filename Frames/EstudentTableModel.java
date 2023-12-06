@@ -74,12 +74,19 @@ public class EstudentTableModel extends AbstractTableModel {
         return Integer.valueOf(rowIndex*columnIndex);
     }
 
+    public Estudante getEstudante(int rowIndex) {
+        Estudante estudante = null;
 
+        if (rowIndex >= 0 && rowIndex < estudantes.size()) {
+            estudante = estudantes.get(rowIndex);
+        }
 
+        return estudante;
+    }
     
-
-
-
-
+    public void remove(Estudante estudante) {
+        estudantes.remove(estudante);
+        fireTableDataChanged();
+    }
 
 }
