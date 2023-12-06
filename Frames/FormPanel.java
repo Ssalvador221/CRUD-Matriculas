@@ -9,10 +9,10 @@ import java.util.Arrays;
 public class FormPanel extends JPanel {
     private BorderLayout layout;
     private EstudanteForm estudanteForm;
-    private PaginaInicial paginaInicial;
+    private AppFrame appFrame;
 
-    public FormPanel(PaginaInicial paginaInicial) {
-        this.paginaInicial = paginaInicial;
+    public FormPanel(AppFrame appFrame) {
+        this.appFrame = appFrame;
         setBackground(Color.decode("#8C8C8C"));
         layout = new BorderLayout(5,5);
         setLayout(layout);
@@ -32,10 +32,9 @@ public class FormPanel extends JPanel {
     }
 
     private void initialize() {
-        estudanteForm = new EstudanteForm(paginaInicial);
+        estudanteForm = new EstudanteForm(appFrame);
 
         add(estudanteForm,BorderLayout.CENTER);
-
         //header = new Header("Cadastrar Novo Estudante");
         //add(header, BorderLayout.NORTH);
     }

@@ -28,7 +28,7 @@ public class EstudanteForm extends JPanel {
     private GridBagLayout layout;
     private GridBagConstraints constraints;
     private Estudante estudante;
-    private PaginaInicial paginaInicial;
+    private AppFrame appFrame;
 
     private JTextField nomeCompleto;
     private JTextField idade;
@@ -43,9 +43,9 @@ public class EstudanteForm extends JPanel {
     private JCheckBox ativo;
     private String[] cursos = {"Selecione uma opção", "Administração", "ADS", "Medicina", "Direito", "Design", "Psicologia", "Física"};
 
-    public EstudanteForm(PaginaInicial paginaInicial) {
+    public EstudanteForm(AppFrame appFrame) {
         this.estudante = null;
-        this.paginaInicial = paginaInicial;
+        this.appFrame = appFrame;
         layout = new GridBagLayout();
         setLayout(layout);
         constraints = new GridBagConstraints();
@@ -197,6 +197,7 @@ public class EstudanteForm extends JPanel {
 
                         JOptionPane.showMessageDialog(EstudanteForm.this, "Estudante adicionado com sucesso!", "Cadastro de Matrícula",
                                 JOptionPane.INFORMATION_MESSAGE);
+                                appFrame.showScreen();
                                 //Redireciona para a home
                     } else {
                         JOptionPane.showMessageDialog(EstudanteForm.this, "Houve alguma falha na verificação dos campos.\n Por favor verifique: \n Se os campos marcados com '*' estão preenchidos \n Se o campo Idade contém um número \n Se foi selecionado algum curso.", "Cadastro de Matrícula",
@@ -207,6 +208,7 @@ public class EstudanteForm extends JPanel {
                         insertModelData(estudante, false);
                         JOptionPane.showMessageDialog(EstudanteForm.this, "Atualizado com sucesso!", "Cadastro de Matrícula",
                                 JOptionPane.INFORMATION_MESSAGE);
+                                appFrame.showScreen();
                                 //Redireciona para a home
                     } else {
                         JOptionPane.showMessageDialog(EstudanteForm.this, "Oops, houve alguma falha na verificação dos campos. :( \n Por favor verifique: \n Se os campos marcados com '*' estão preenchidos \n Se o campo Idade contém um número \n Se foi selecionado algum curso.", "Cadastro de Matrícula",
@@ -228,6 +230,7 @@ public class EstudanteForm extends JPanel {
                 dialogoButton = JOptionPane.showConfirmDialog(null, "Deseja realmente cancelar?", "Cadastro de Matricula",
                         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (dialogoButton == JOptionPane.YES_OPTION) {
+                    appFrame.showScreen();
                     //Redireciona para a home
                 }
                 if (dialogoButton == JOptionPane.NO_OPTION) {

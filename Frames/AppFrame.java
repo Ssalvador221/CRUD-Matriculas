@@ -3,11 +3,12 @@ package Frames;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Model.Estudante;
 
 import java.awt.CardLayout;
 
 public class AppFrame extends JFrame {
-    private PaginaInicial inicial;
+    private PaginaInicial paginaInicial;
 	private JPanel cardsPane;
     private CardLayout layout;
     private FormPanel formPanel;
@@ -23,8 +24,8 @@ public class AppFrame extends JFrame {
 		cardsPane = new JPanel();
 		cardsPane.setLayout(layout);
 		add(cardsPane);
-
-		criarCards();
+        showButton();
+        criarCards();
     }
 
     public void showScreen(){
@@ -33,16 +34,16 @@ public class AppFrame extends JFrame {
 		setVisible(true);
         setSize(1024, 600);
     }
-/* 
-    private void showButton(){
-        inicial = new PaginaInicial(this);
-        layout.show(cardsPane, PaginaInicial.class.getName());
-    } */
 
-/* 	public void mostrarFormEstudante(Estudante estudante) {
+    private void showButton(){
+        paginaInicial = new PaginaInicial(this);
+        layout.show(cardsPane, PaginaInicial.class.getName());
+    }
+
+	public void mostrarFormEstudante(Estudante estudante) {
 		formPanel.getEstudanteForm().setEstudante(estudante);
 		layout.show(cardsPane, EstudanteForm.class.getName());
-	} */
+	} 
 
     public void showEstudentTable(){
         estudanteListTable.recarregarEstudante();
@@ -50,14 +51,14 @@ public class AppFrame extends JFrame {
     }
 
     private void criarCards() {
-		inicial = new PaginaInicial(this);
-		cardsPane.add(inicial, PaginaInicial.class.getName());
+		paginaInicial = new PaginaInicial(this);
+		cardsPane.add(paginaInicial, PaginaInicial.class.getName());
 
         estudanteListTable = new EstudanteListTable(this);
         cardsPane.add(estudanteListTable, EstudanteListTable.class.getName());
 
-		formPanel = new FormPanel(inicial);
-		cardsPane.add(formPanel, FormPanel.class.getName()); 
+		formPanel = new FormPanel(this);
+		cardsPane.add(formPanel, FormPanel.class.getName());
 	}
 
 }
